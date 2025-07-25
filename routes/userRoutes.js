@@ -3,6 +3,7 @@ var express = require("express");
 const {
   createUserController,
   getUserController,
+  loginHandleController,
 } = require("../controller/userController");
 var router = express.Router();
 
@@ -13,5 +14,6 @@ router.get("/", function (req, res) {
   });
 });
 router.post("/create", createUserController);
+router.post("/login", loginHandleController);
 
 module.exports = router;

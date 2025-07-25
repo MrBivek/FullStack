@@ -29,7 +29,7 @@ async function main() {
     .connect(
       "mongodb+srv://professor:professor@professor.dgfbdsq.mongodb.net/",
       {
-        dbName: "professor_database",
+        dbName: "s8_database",
       }
     )
     .then((data) => {
