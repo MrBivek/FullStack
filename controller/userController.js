@@ -45,7 +45,7 @@ async function loginHandleController(req, res) {
     });
   }
 
-  const checkUser = await User.findOne({ email });
+  const checkUser = await User.findOne({ email }).select("+password");
   if (!checkUser) {
     return res.status(400).json({
       message: "User with this email does not exist",
@@ -76,7 +76,17 @@ async function loginHandleController(req, res) {
   }
 }
 
+async function getUserListController(req, res) {
+  const userList = await User.find();
+
+  res.status(200).json({
+    message: "User List",
+    users: userList,
+  });
+}
+
 module.exports = {
   createUserController,
   loginHandleController,
+  getUserListController,
 };
