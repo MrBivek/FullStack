@@ -6,6 +6,7 @@ var cors = require("cors");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/userRoutes");
+var adminRouter = require("./routes/adminRoutes");
 
 var app = express();
 app.use(cors());
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/api/admin", adminRouter);
 
 // getting-started.js
 const mongoose = require("mongoose");
