@@ -10,6 +10,7 @@ const {
   updateProfileMeController,
 } = require("../controller/userController");
 const { validateTokenMiddleware } = require("../middleware/AuthMiddleware");
+const { uploadMiddleware } = require("../middleware/FileHandleMiddleware");
 var router = express.Router();
 
 /* GET users listing. */
@@ -22,12 +23,18 @@ router.post("/create", createUserController);
 router.post("/login", loginHandleController);
 router.get("/list", validateTokenMiddleware, getUserListController);
 
-router.put("/profile", validateTokenMiddleware, updateProfileMeController);
+router.put(
+  "/profile",
+  validateTokenMiddleware,
+  uploadMiddleware.single("profileImg"),
+  updateProfileMeController
+);
 
 router.get("/profile/me", validateTokenMiddleware, viewMyProfileController);
 router.get(
   "/profile/:id",
   validateTokenMiddleware,
+
   viewProfileofUserController
 );
 
