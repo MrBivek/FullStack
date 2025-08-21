@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const multer = require("multer");
 
 const uploadPath = path.join(__dirname, "..", "uploads", "profile");
 fs.mkdirSync(uploadPath, { recursive: true });
